@@ -1,0 +1,36 @@
+.o-sans {
+    font-family: 'Open Sans';
+}
+
+.oswald {
+    font-family: 'Oswald', sans-serif;
+}
+
+.oswald-thin {
+    font-family: 'Oswald';
+    font-weight: 200;
+}
+
+.navitems a {
+    margin-left: 5px;
+}
+
+.navitems {
+    padding-left: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: lightgray;
+}
+
+::-webkit-scrollbar-thumb {
+    background: darkgray
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: gray
+}

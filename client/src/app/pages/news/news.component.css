@@ -1,0 +1,15 @@
+.carousel-image { 
+    object-fit: cover; 
+    height: 600px; 
+    object-position: 50% 25%;
+}
+
+.card-columns {
+    column-count: 4;
+}
+
+@media only screen and (max-width: 768px) {
+    .card-columns {
+        column-count: 2;
+    }
+}

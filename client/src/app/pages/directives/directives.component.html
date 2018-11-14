@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+  
+<div class="container-fluid" style="background-color: darkgray; min-height: 400px">
+
+        <div class="row">
+
+            <!--Directive Form-->
+            <div class="col-md-8" style="padding-left: 48px; background-color: #494949; padding-right: 32px; color: white">
+                <h1 class="oswald" style="font-size: 4rem; margin-left: -2px; padding-top: 10px; color: white">DIRECTIVE FORM >> </h1>
+                
+                <form #directiveForm="ngForm" (ngSubmit)="submitForm(directiveForm)">
+                    <div class="form-row">
+
+                        <div class="col-6">
+                            <label for="title" class="label">Title</label>
+                            <input type="text" id="title" placeholder="Directive Title" class="form-control o-sans" [(ngModel)]="newDirective.title" name="title" autocomplete="off">
+                        </div>
+                        
+                        <div class="col-2">
+                            <label for="code" class="label" style="padding-left: 5px">SSC</label>
+                            <input type="password" id="code" placeholder="4-Digit Code" class="form-control o-sans" [(ngModel)]="newDirective.id" name="id">
+                        </div>
+
+                        <div class="col-4">
+                            <label for="dirtype" class="label">Type</label>
+                            <select id="dirtype" class="form-control"  [(ngModel)]="newDirective.dirtype" name="dirtype">
+                                <option *ngFor="let directivetype of directivetypes" [value]="directivetype">{{directivetype}}</option>
+                            </select>
+
+                            <!-- Need work -->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cc" class="label">CC</label>
+                        <input type="text" placeholder="Recipients (separated by a coma)" id="cc" class="form-control o-sans" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content" class="label">Content</label>
+                        <textarea id="content" cols="30" rows="12" class="form-control o-sans" [(ngModel)]="newDirective.content" name="content"></textarea>
+                    </div>
+
+                    <button class="btn btn-primary rounded-0" type="submit">Submit</button>
+                </form>
+            </div>
+
+            <!--List of sent directives -->
+            <div class="col-md-4" style="border-left: 0px solid white; padding-top: 10px; padding-left: 15px; background-color: aquamarine; color: black">
+                <h1 class="oswald" style="font-size: 4rem; margin-bottom: 15px">INBOX<span style="font-size: 2rem; font-weight: 100;">REFRESH</span></h1>
+
+                <div class="container" style="height: 75%; overflow-y: auto;">
+                    <div class="row" style="background-color: lightgray; height: initial; margin-bottom: 5px">
+                        
+                        <div class="col-12" style="padding: 10px 15px 10px 0px; max-height: 300px; margin-bottom: 10px; background-color: white" *ngIf="1==0">
+                            <h4 class="oswald i-content"></h4>
+                            <button class="btn btn-primary btn-sm rounded-0" style="margin-left: 15px">See Content</button>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="container-fluid" *ngIf="allDirectivesLoaded" style="height: 400px">
+    <div class="row" style="background-color: white; padding: 16px 32px; height: 300px;">
+        <div class="col-4">
+            <h1 class="oswald" style="font-size: 3.5rem">SENT DIRECTIVES</h1>
+        </div>
+        <div class="col-12 mx-auto" style="height: 200px">
+            <div class="card-group" style="padding-bottom: 0px">
+                <div *ngFor="let directive of userDirectives | paginate: { itemsPerPage: 5, currentPage: p }" class="card"
+                    style="max-width: 20%; min-height: 200px">
+                    <div class="card-body">
+                        <h5 class="card-title">{{directive.title}}</h5>
+                        <!-- <p class="card-text">{{directive.content}}</p> -->
+                    </div>
+
+                    <div class="card-footer" style="width: 100%">
+                        <p class="card-text">Reviewed: {{directive.reviewed}}</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="col-4 mx-auto my-1" style="height: 60px">
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+
+  
