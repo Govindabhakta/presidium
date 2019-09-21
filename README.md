@@ -1,16 +1,11 @@
 # Presidium
-An MUN Crisis Platform built with MEAN Stack (and love)
+An MUN Crisis Platform built with MEAN Stack
 
-## Currently work in progress
-#### Features currently in the works
-* Live chat
-* Voting
-* Conference page
+## No longer being worked on
 
 #### Some issues/placeholders include
 
 * Image upload system still using placeholders
 * Auth Guards not using HTTPInterceptors yet
-* Several UI Bugs
 
 
